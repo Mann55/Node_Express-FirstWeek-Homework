@@ -29,9 +29,18 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+/*** 
+ function pickFromArray(quotes) {
+  const randomNumber = Math.random();
+  const totalNumberQuotes = quotes.length;
+  const randomIndex = Math.floor(randomNumber * totalNumberQuotes);
+  return quotes[randomIndex];
+}
+***/
+
 //Start our server so that it listens for HTTP requests!
 let port = 5000;
 
-app.listen( port, function () {
+app.listen(port, function () {
   console.log("Your app is listening on port " + port);
 });

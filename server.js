@@ -1,4 +1,4 @@
-const { response } = require("express");
+//const { response } = require("express");
 // server.js
 // This is where your node app starts
 
@@ -18,6 +18,27 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+/** Level 1 Challenge - make the quote server **/
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+/** Level 2 Challenge - respond from url with parameter! **/
+app.get("/quotes/search", function (request, response) {
+  const termParam = request.query.term.toLowerCase();
+  //filter quotes based on term
+  const result = quotes.filter(function (singleQuote) {
+    const quoteText = singleQuote["quote"].toLowerCase();
+    const quoteAuthor = singleQuote["author"].toLowerCase();
+    return quoteText.includes(termParam) || quoteAuthor.includes(termParam);
+  });
+  response.send(result);
+});
 
 //...END OF YOUR CODE
 
